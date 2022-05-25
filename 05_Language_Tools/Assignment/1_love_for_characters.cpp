@@ -1,3 +1,10 @@
+
+/*
+                PROBLEM STATEMENT
+Ayush loves the characters ‘a’, ‘s’, and ‘p’.
+He got a string of lowercase letters and he wants to find out how many times characters ‘a’, ‘s’, and ‘p’
+occurs in the string respectively. Help him find it out.
+*/
 #include <bits/stdc++.h>
 using namespace std;
 using namespace chrono;
@@ -31,8 +38,17 @@ void pgsolve()
     cin >> n;
     string str;
     cin >> str;
-    cout<<count(all(str),'a')<<" "<<count(all(str),'s')<<" "<<count(all(str),'p')<<endl;
-    
+    // does three traversals
+    // cout<<count(all(str),'a')<<" "<<count(all(str),'s')<<" "<<count(all(str),'p')<<endl;
+
+    unordered_map<char, int> m1;
+
+    for (int i = 0; i < str.size(); ++i)
+    {
+        m1[str[i]]++;
+    }
+
+    cout << m1['a'] << " " << m1['s'] << " " << m1['p'] << '\n';
 }
 
 int32_t main()

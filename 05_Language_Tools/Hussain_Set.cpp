@@ -31,6 +31,7 @@ int remove_max(int *curr_m, vi &a, queue<int> &q, int *end)
     // a[*end]=5;
     // cout << "here front1 is "<< q.front()<< endl;
 
+    ////* array is not empty && (if queue is empty || last element of array is larger than front of queue)
     if (*end >= 0 && (q.empty() || (a[*end] >= q.front())))
     {
         max_ele = a[*end];
@@ -41,12 +42,13 @@ int remove_max(int *curr_m, vi &a, queue<int> &q, int *end)
         max_ele = q.front();
         q.pop();
     }
-    q.push(max_ele / 2);
+    q.push(max_ele / 2); //* again push to queue
     // cout << "here end is " << *end << endl;
     // cout << "here front is "
         //  << q.front()
         //  << endl;
 
+    // which selected from the queue or array
     return max_ele;
 }
 void pgsolve()
@@ -58,16 +60,18 @@ void pgsolve()
 
     rep(i, n) cin >> a[i];
     queue<int> q;
+    //* take comman variables cause queries are in chronological manner (a[i] > q[i-1])
+    //* so satrt counting from where you end last time
     int count_m = 0;
-    int end = n - 1;
+    int end = n - 1; //* point to sorted array end
     sortall(a);
 
     while (m--)
     {
         int curr_m;
-        cin >> curr_m;
-        int ans = 0;
-
+        cin >> curr_m; //* query point
+        int ans = 0;  //* comman ans
+                      //* comman count_m (0 < 1)
         for (; count_m < curr_m; count_m++)
         {
             // if (end >= 0 && (q.empty() || (a[end] >= q.front())))
