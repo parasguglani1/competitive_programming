@@ -19,48 +19,45 @@ Sample Output 1:
 */
 #include <iostream>
 using namespace std;
-/* //method 1 Function to rotate arr[] of size n by d elements using temp[] array storing d elements space complexity O(d)
+// method 1 Function to rotate arr[] of size n by d elements using temp[] array storing d elements space complexity O(d)
 void Rotate(int arr[], int d, int n)
 {
-  // Write your code here
-  if (n == 0 || n == 1)
-      return;
-  d = d % n;
-  int temp[d];
-  // for (int i = 0; i < d; i++)
-  // {
-  //     temp[i] = arr[i];//left rotation
-  // }
-  for (int i = 0; i < d; i++)
-  {
-      temp[i] = arr[n - d + i];
-  }
+    // Write your code here
+    if (n == 0 || n == 1)
+        return;
+    d = d % n;
+    int temp[d];
+    for (int i = 0; i < d; i++)
+    {
+        temp[i] = arr[i];//left rotation
+    }
+    // for (int i = 0; i < d; i++)
+    // {
+    //     temp[i] = arr[n - d + i]; //right rotation
+    // }
 
+    for (int i = d; i < n; i++)
+    {
+        arr[i - d] = arr[i]; // left rotation
+    }
+    // for (int i = n - 1; i >= d; i--)
+    // {
+    //     arr[i] = arr[i - d];
+    //     // cout<<arr[i]<<" ";
+    //     // right rotation
+    // }
 
-  // for (int i = d; i < n; i++)
-  // {
-  //     arr[i - d] = arr[i]; // left rotation
-  // }
-  for (int i = n - 1; i >= d; i--)
-  {
-      arr[i] = arr[i - d];
-      // cout<<arr[i]<<" ";
-      // right rotation
-  }
+    // cout << endl;
+    for (int i = n - d, j = 0; i < n, j < d; i++, j++)
+    {
+        arr[i] = temp[j]; // left rotation
+    }
 
-  cout << endl;
-  // for (int i = n - d, j = 0; i < n, j < d; i++, j++)
-  // {
-  //     arr[i] = temp[j]; // left rotation
-  // }
-
-  for (int i = 0; i < d; i++)
-  {
-      arr[i] = temp[i]; // right rotation
-  }
+    // for (int i = 0; i < d; i++)
+    // {
+    //     arr[i] = temp[i]; // right rotation
+    // }
 }
-
-*/
 
 void reverse(int *input, int start, int end)
 {
@@ -83,15 +80,15 @@ void rotate(int *input, int d, int n)
     {
         return;
     }
-    // right rotation
-    // reverse(input, 0, n - 1); // reverse the whole array
-    // reverse(input, 0, n - d - 1); // reverse the first part of the array
-    // reverse(input, n - d, n - 1); // reverse the second part of the array
-
     // left rotation
     reverse(input, 0, n - 1);     // reverse the whole array
-    reverse(input, 0, d-1); // reverse the first part of the array
-    reverse(input, d, n - 1); // reverse the second part of the array
+    reverse(input, 0, n - d - 1); // reverse the first part of the array
+    reverse(input, n - d, n - 1); // reverse the second part of the array
+
+    // right rotation
+    // reverse(input, 0, n - 1);     // reverse the whole array
+    // reverse(input, 0, d-1); // reverse the first part of the array
+    // reverse(input, d, n - 1); // reverse the second part of the array
 
     // could use kn built function to reverse the array
     // //  Reverse all the array elements
@@ -113,8 +110,8 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
     cin >> x;
-    // Rotate(arr, x, n); //method 1
-    rotate(arr, x, n); // method 2
+    Rotate(arr, x, n); // method 1
+    // rotate(arr, x, n); // method 2
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
 

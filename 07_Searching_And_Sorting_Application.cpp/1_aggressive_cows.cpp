@@ -26,9 +26,9 @@ typedef long long ll;
 
 bool check(ll stalls[], ll n, ll c, ll d)
 {
-    int count = 1;
-    int prev = stalls[0];
-    for (int i = 1; i < n; i++)
+    ll count = 1;
+    ll prev = stalls[0];
+    for (ll i = 1; i < n; i++)
     {
         if ((stalls[i] - prev) >= d)
         {
@@ -64,9 +64,9 @@ int main()
         sort(stalls, stalls + n);
 
         // using bin search find max possible distance
-        ll start = stalls[0];               // min dist possible
+        ll start = 0;               // min dist possible
         ll end = stalls[n - 1] - stalls[0]; // max dist possible
-        int max_dist = INT_MIN;
+        ll max_dist = INT_MIN;
         while (start <= end)
         {
             // safe way to get mmiddle - no overflow
@@ -75,6 +75,7 @@ int main()
             {
                 // if i can arrange the cows at mid then i will try from mid to end
                 // else i will try for start to mid
+                max_dist=mid;
                 start = mid + 1;
                 if (max_dist < mid)
                 {

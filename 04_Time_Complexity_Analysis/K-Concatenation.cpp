@@ -19,33 +19,41 @@ using namespace std;
 
 typedef long long ll;
 
-ll kadane(int arr[], int n){
+//kadane
+ll kadane(ll arr[], ll n)
+{
+// 	Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+// A subarray is a contiguous part of an array.
+
+
 	ll curr_sum = 0;
 	ll max_so_far = INT_MIN;
 	for (int i = 0; i < n; ++i)
 	{
-		curr_sum = curr_sum +arr[i];
-		if (max_so_far<curr_sum)
+		curr_sum = curr_sum + arr[i];
+		if (max_so_far < curr_sum)
 		{
 			max_so_far = curr_sum;
 		}
 
-		if (curr_sum<0)
+		if (curr_sum < 0)
 		{
 			curr_sum = 0;
 		}
 	}
 	return max_so_far;
 }
-ll maxSubarraySum(int* arr,int n,int k){
+ll maxSubarraySum(ll *arr, ll n, ll k)
+{
 	ll kadanes_sum = kadane(arr, n);
-	if (k==1)
+	if (k == 1)
 	{
 		return kadanes_sum;
 	}
 
-	ll curr_prefix_sum=0, curr_sufffix_sum=0;
-	ll max_prefix_sum=INT_MIN, max_suffix_sum=INT_MIN;
+	ll curr_prefix_sum = 0, curr_suffix_sum = 0;
+	ll max_prefix_sum = INT_MIN, max_suffix_sum = INT_MIN;
 
 	for (int i = 0; i < n; ++i)
 	{
@@ -53,46 +61,41 @@ ll maxSubarraySum(int* arr,int n,int k){
 		max_prefix_sum = max(max_prefix_sum, curr_prefix_sum);
 	}
 	ll totalSum = curr_prefix_sum;
-	for (int i = n-1; i >=0; --i)
+	for (int i = n - 1; i >= 0; --i)
 	{
-		curr_sufffix_sum += arr[i];
-		max_suffix_sum = max(max_suffix_sum, curr_sufffix_sum);
+		curr_suffix_sum += arr[i];
+		max_suffix_sum = max(max_suffix_sum, curr_suffix_sum);
 	}
 
 	ll ans;
-	if (totalSum<0)
+	if (totalSum < 0)
 	{
-		ans=max(max_suffix_sum+max_suffix_sum, kadanes_sum);
-	}else{
-		ans = max(max_suffix_sum+max_prefix_sum+totalSum*(k-2), kadanes_sum);
+		ans = max(max_suffix_sum + max_prefix_sum, kadanes_sum);
+	}
+	else
+	{
+		ans = max(max_suffix_sum + max_prefix_sum + totalSum * (k - 2), kadanes_sum);
 	}
 	return ans;
-
-
-
 }
-int main( int argc , char ** argv )
+int main()
 {
-	ios_base::sync_with_stdio(false) ; 
-	cin.tie(NULL) ; 
-	
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
 	int t;
-	cin>>t;
-	while(t--){
-		int n,k;
-		cin>>n>>k;
-		int arr[n];
+	cin >> t;
+	while (t--)
+	{
+		ll n, k;
+		cin >> n >> k;
+		ll arr[n];
 		for (int i = 0; i < n; ++i)
 		{
-			std::cin>>arr[i];
+			std::cin >> arr[i];
 		}
-		cout << maxSubarraySum(arr, n, k)  << '\n';
-
+		cout << maxSubarraySum(arr, n, k) << '\n';
 	}
 
-
-	return 0 ; 
-
-
-
+	return 0;
 }

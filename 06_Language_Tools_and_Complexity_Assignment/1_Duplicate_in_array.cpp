@@ -73,29 +73,36 @@ int duplicate(int arr[], int n)
     //     if(arr[i] == arr[i-1]) return arr[i];
     // }
 
-    //? aproch 4 [O(n)]
+    //? approch 4 [O(n)]
     //* sum all and minus first N number
     int sum = 0;
     for (int i = 0; i < n; i++)
     {
         sum += arr[i];
     }
-    int ans = sum - (n - 2 * n - 1) / 2;
+    int ans = sum - (n * (n - 1) )/ 2;
     return ans;
+// return 0;
 }
 
 int main()
 {
-    int n;
-    cin >> n;
-    int arr[n];
-
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        cin >> arr[i];
-    }
+        int n;
+        cin >> n;
+        int arr[n];
 
-    int ans = duplicate(arr, n);
+        for (int i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+        }
+
+        int ans = duplicate(arr, n);
+        cout << ans << endl;
+    }
 
     return 0;
 }
