@@ -24,13 +24,63 @@ Shreya visits the "Momos Market" for only one day. She has 11 INR to spend. She 
 
 #include <bits/stdc++.h>
 using namespace std;
-void fillPrefixSum(int arr[], int n, int prefixSum[])
+
+void getIndexBinary( int *prefixSum, int numberOfShops, int todaysmoney)
 {
-    prefixSum[0] = arr[0];
-    // Adding present element with previous element
-    for (int i = 1; i < n; i++)
-        prefixSum[i] = prefixSum[i - 1] + arr[i];
+    int index = 0;
+    // int todaysmoney = money[i];
+
+    // check if this money is less than required at first shop
+    if (todaysmoney<prefixSum[0])
+    {
+        cout<<0<< " "<<todaysmoney<<endl;
+        return;
+    }
+    if (todaysmoney == prefixSum[0])
+    {
+        cout << 1 << " " << todaysmoney-prefixSum[0] << endl;
+        return;
+    }
+    if (todaysmoney >= prefixSum[numberOfShops-1])
+    {
+        cout << numberOfShops << " " << todaysmoney - prefixSum[numberOfShops - 1] << endl;
+        return;
+    }
+    // check if this money is greater than all sums ie. last index
+
+
+    int start = 0, end = numberOfShops - 1;
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+        if (prefixSum[mid] == todaysmoney)
+        {
+            index = mid;
+            break;
+        }
+        else if (prefixSum[mid] < todaysmoney)
+        {
+            if (todaysmoney < prefixSum[mid + 1])
+            {
+                index = mid;
+                break;
+            }
+            start = mid + 1;
+        }
+        else if (prefixSum[mid] > todaysmoney)
+        {
+            if (todaysmoney > prefixSum[mid - 1])
+            {
+                index = mid - 1;
+                break;
+            }
+            end = mid - 1;
+        }
+    }
+
+    cout << index + 1 << " " << todaysmoney - prefixSum[index] << endl;
 }
+
 int main()
 {
     int numberOfShops, numberOfDays, x;
@@ -47,45 +97,35 @@ int main()
         cin >> money[i];
     }
     int prefixSum[numberOfShops];
-    fillPrefixSum(momosCost, numberOfShops, prefixSum);
+    // find continuous sum (prefix sum) - eg array 2,1,3,4 -> cont sum => 2 ,3 ,6 ,10
+    prefixSum[0] = momosCost[0];
+    // Adding present element with previous element
+    for (int i = 1; i < numberOfShops; i++)
+        prefixSum[i] = prefixSum[i - 1] + momosCost[i];
+
+    // for every saved money find its posn in price continuous sum using binary search
     for (int i = 0; i < numberOfDays; i++)
     {
-        int index=0;
-        int todaysmoney=money[i];
-        int start=0,end=numberOfShops-1;
-        while(start<=end)
-        {
-            int mid=start + (end-start)/2;
-            if(prefixSum[mid]==todaysmoney)
-            {
-                index=mid;
-                break;
-            }
-            else if(prefixSum[mid]<todaysmoney)
-            {
-                if(todaysmoney<prefixSum[mid+1])
-                {
-                    index=mid;
-                    break;
-                }
-                start=mid+1;
-
-            }
-            else if (prefixSum[mid] > todaysmoney)
-            {
-                if (todaysmoney > prefixSum[mid -1])
-                {
-                    index = mid-1;
-                    break;
-                }
-                end=mid-1;
-            }
-        }
-
-        cout << index + 1 << " " << todaysmoney - prefixSum[index];
+        getIndexBinary( prefixSum,  numberOfShops,  money[i]);
     }
 
-    
+    //* Base aproch O(n2)
+    // for (long long i = 0; i < days; i++){
+    //     long long remain = 0, momo = 0, money = saved_money[i];
+    //     for (long long j = 0; j < n; j++)
+    //     {
+    //         if(money - shops[j] >= 0){
+    //             momo++;
+    //             money -= shops[j];
+    //             remain = money;
+    //         } else {
+
+    //             break;
+    //         }
+    //     }
+    //     cout << momo << " " << remain << endl;
+    // }
+
 
     return 0;
 }
