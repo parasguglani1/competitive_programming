@@ -61,13 +61,14 @@ bool findEmptylocation(int &row, int &col)
 }
 bool solveSudoku()
 {
+
     int row, col;
     if (!findEmptylocation(row, col))
     {
         return true;
     }
     for (int i = 1; i <= 9; i++)
-    {
+    {    //inserting all numbers one by one 
         if (isPossible(i, row, col))
         {
             board[row][col] = i;
@@ -75,6 +76,7 @@ bool solveSudoku()
             {
                 return true;
             }
+            //backtracking
             board[row][col] = 0;
         }
     }
