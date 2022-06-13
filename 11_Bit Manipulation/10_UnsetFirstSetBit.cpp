@@ -31,13 +31,22 @@ int firstSetBit(int n)
     int m = 0;
     m = unSetI(n, i);
     return m;
+
+// 2nd method
+    // return n ^ (n & (-n));
+}
+//2nd method
+int turnOffFirstSetBit(int n)
+{
+
+    return n & (n - 1);
 }
 
 int main()
 {
     int n;
     cin >> n;
-    int m = firstSetBit(n);
+    int m = turnOffFirstSetBit(n);
     cout << m << endl;
 
     return 0;

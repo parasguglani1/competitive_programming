@@ -24,7 +24,10 @@ int clearfromMSB(int n, int i)
     int a = 1 << (i);
     a--;
     int mask = a;
+    // mask = (1 << i) - 1; // one liner
+
     int ans = mask & n;
+    
     return ans;
 }
 

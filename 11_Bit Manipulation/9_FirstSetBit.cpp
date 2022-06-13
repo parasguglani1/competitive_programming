@@ -32,6 +32,15 @@ int firstSetBit(int n)
     m = setI(m, i);
     return m;
 }
+//2nd method
+int returnFirstSetBit(int n)
+{
+    int set_bit = n ^ (n & (n - 1));
+    return set_bit;
+
+    // o(1) approach
+    // return n & (-n);
+}
 
 int main()
 {

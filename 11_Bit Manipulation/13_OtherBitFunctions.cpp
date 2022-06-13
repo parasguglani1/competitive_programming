@@ -84,3 +84,24 @@ bool bitsAreInAltOrder(unsigned int n)
     // to check if all bits are set in 'num'
     return allBitsAreSet(num);
 }
+void odd_even(int n)
+{
+    if (n & 1)
+    {
+        cout << "odd" << endl;
+    }
+    else
+    {
+        cout << "even" << endl;
+    }
+}
+
+int findOddFrequencyElement(int arr[], int n)
+{
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ans = ans ^ arr[i];
+    }
+    return ans;
+}
