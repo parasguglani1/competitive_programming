@@ -27,9 +27,6 @@ void removeDuplicate(char str[], set<char> s)
 int main()
 {
 
-    // freopen("/home/spy/Desktop/input.txt", "r", stdin);
-    // freopen("/home/spy/Desktop/output.txt", "w", stdout);
-
     int t;
     cin >> t;
 
@@ -40,7 +37,6 @@ int main()
 
         set<char> s;
         removeDuplicate(str, s);
-        // consecutiveDuplicate(str);
         cout << str << endl;
     }
     return 0;
