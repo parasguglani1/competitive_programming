@@ -25,7 +25,7 @@ void removeX(char s[])
         removeX(s);
     }
 }
-//using string
+// using string
 string removex(string str)
 {
     if (!str.empty())
@@ -46,7 +46,7 @@ int main()
     {
         string str;
         cin >> str;
-        str= removex(str);
+        str = removex(str);
         // remove erase idiom
         // remove function removes all occurunces of x but doesn't reduce size of string and gives iterator to the end
         // erase function use that iterator to reduce actual length
