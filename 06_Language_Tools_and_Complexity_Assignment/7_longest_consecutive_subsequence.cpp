@@ -45,6 +45,7 @@ int findLongestConseqSubseq(int a[], int N)
         }
         else if (a[i + 1] - a[i] == 0)
         {
+            continue;
         }
         else
         {
@@ -305,7 +306,54 @@ vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
     }
     return v;
 } */
-
+ vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
+{
+    unordered_map<int, int> mp;
+    for (int i = 0; i < n; i++)
+    {
+        mp[arr[i]] = i;
+    }
+    vector<int> res;
+    int maxLength = 0;
+    int startElement = 0;
+    int startIndex = n;
+    for (int i = 0; i < n; i++)
+    {
+        int num = arr[i];
+        int count;
+        if (mp[num] != -1)
+        {
+            count = 0;
+            int index = mp[num];
+            while (mp.find(num) != mp.end() && mp[num] != -1)
+            {
+                count++;
+                mp[num] = -1;
+                num++;
+            }
+            num = arr[i] - 1;
+            while (mp.find(num) != mp.end() && mp[num] != -1)
+            {
+                count++;
+                index = mp[num];
+                mp[num] = -1;
+                num--;
+            }
+            if (count > maxLength || (count == maxLength && index < startIndex))
+            {
+                // print(mp);
+                maxLength = count;
+                startElement = num + 1;
+                startIndex = index;
+            }
+        }
+    }
+    for (int i = startElement; i < startElement + maxLength; i++)
+    {
+        res.push_back(i);
+    }
+    return res;
+} 
 int main()
 {
     int n;

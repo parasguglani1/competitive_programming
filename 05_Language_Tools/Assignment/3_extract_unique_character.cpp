@@ -82,6 +82,21 @@ char *uniqueChar(char *s)
     out[j] = '\0';
     return out;
 }
+//map
+string uniqueChar(string str)
+{
+    unordered_map<char, bool> mp;
+    string res = "";
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (mp.find(str[i]) == mp.end())
+        {
+            mp[str[i]] = true;
+            res += str[i];
+        }
+    }
+    return res;
+}
 //using set
 string uniqueChar(string str)
 {
