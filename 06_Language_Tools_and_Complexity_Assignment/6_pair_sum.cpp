@@ -6,7 +6,7 @@ Input format:
 The first line of input contains an integer, that denotes the value of the size of the array. Let us denote it with the symbol N.
 The following line contains N space separated integers, that denote the value of the elements of the array.
 Output format :
-The first and only line of output contains the count of pair of elements in the array which sum up to 0. 
+The first and only line of output contains the count of pair of elements in the array which sum up to 0.
 Constraints :
 0 <= N <= 10^4
 Time Limit: 1 sec
@@ -65,8 +65,7 @@ int getUniquePair(int arr[], int n)
             else if (arr[i] == arr[i + 1] && arr[j] == arr[j - 1])
             {
                 i++;
-               
-            }
+                }
             else if (arr[i] == arr[i + 1])
             {
                 i++;

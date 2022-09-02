@@ -25,7 +25,7 @@ int maxProductSubarray(int arr[], int n)
    min_ending_here is always 1 or
    some negative product ending with arr[i] */
 
-   
+
     for (int i = 0; i < n; i++)
     {
         /* If this element is positive, update

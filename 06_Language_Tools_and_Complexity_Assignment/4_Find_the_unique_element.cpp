@@ -99,6 +99,5 @@ int main()
         cout << findUniqueSort(arr, n) << endl;
     }
 
-
     return 0;
 }

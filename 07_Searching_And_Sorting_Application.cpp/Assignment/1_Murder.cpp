@@ -52,7 +52,7 @@ ll merge(ll a[], int start, int mid, int end)
             // each element will be added length times
             count += (a[i] * (end - j + 1));
             temp[k++] = a[i++];
-            
+
         }
         else
         {

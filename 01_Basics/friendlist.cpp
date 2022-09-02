@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 using namespace chrono;
@@ -32,7 +33,7 @@ void pgsolve()
     rep(i, n)
     {
         int x,y;
-        cin >> x >> y;  
+        cin >> x >> y;
         a[x]++;
         a[y]++;
     }

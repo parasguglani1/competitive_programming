@@ -18,32 +18,32 @@
 using namespace std;
 
 typedef long long ll;
-
+		
 //kadane
-ll kadane(ll arr[], ll n)
-{
-// 	Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
-
-// A subarray is a contiguous part of an array.
-
-
-	ll curr_sum = 0;
-	ll max_so_far = INT_MIN;
-	for (int i = 0; i < n; ++i)
+	ll kadane(ll arr[], ll n)
 	{
-		curr_sum = curr_sum + arr[i];
-		if (max_so_far < curr_sum)
-		{
-			max_so_far = curr_sum;
-		}
+	// 	Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
-		if (curr_sum < 0)
+	// A subarray is a contiguous part of an array.
+
+
+		ll curr_sum = 0;
+		ll max_so_far = INT_MIN;
+		for (int i = 0; i < n; ++i)
 		{
-			curr_sum = 0;
+			curr_sum = curr_sum + arr[i];
+			if (max_so_far < curr_sum)
+			{
+				max_so_far = curr_sum;
+			}
+
+			if (curr_sum < 0)
+			{
+				curr_sum = 0;
+			}
 		}
+		return max_so_far;
 	}
-	return max_so_far;
-}
 ll maxSubarraySum(ll *arr, ll n, ll k)
 {
 	ll kadanes_sum = kadane(arr, n);

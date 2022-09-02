@@ -4,7 +4,7 @@ Diwali is here. While everyone here is busy texting "Happy Diwali" wishes to eve
 Now, the Apex court has allowed the sale of only green crackers this Diwali. Out of all green crackers, "Chakri" is most popular. Because of the irregular supply of "Chakri", the price of "Chakri" is oscillating daily. NinjaCoder saw a business opportunity in this. He/She got a price list for coming N days from an insider in the market union. Prices in the list are for 1 unit of a large packet of "Chakri". Each large packet contains 100 units of Chakri.
 Now, due to financial limitations, NinjaCoder can transact only 1 large packet (100 units of "Chakri") in the market. You have to tell maximum profit possible, given that he/she can transact atmost one time.
 Note: 1. Transaction refers to the act of buying and selling.
-      2. "Chakri" cannot be sold individually. NinjaCoder has to buy/sell the entire packet. 
+	  2. "Chakri" cannot be sold individually. NinjaCoder has to buy/sell the entire packet.
 Input Format
 First-line contains N - (Integer)
 Second-line contains N spaced integers.
@@ -19,28 +19,33 @@ Sample Input 0:
 Sample Output 0:
 8 */
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
 	int i, n;
 	cin >> n;
-	int* arr = new int[n];
-	for (i = 0;i < n;i++) {
+	int *arr = new int[n];
+	for (i = 0; i < n; i++)
+	{
 		cin >> arr[i];
 	}
 
+	// find min element and max profit possible till then 
 	int min = 99999;
 	int profit = 0;
-	for (i = 0;i < n;i++) 
+	for (i = 0; i < n; i++)
 	{
-		if (arr[i] <= min) {
+		if (arr[i] <= min)
+		{
 			min = arr[i];
 		}
 		else
 		{
 			int p = arr[i] - min;
-			if (p > profit) {
+			if (p > profit)
+			{
 				profit = p;
 			}
 		}

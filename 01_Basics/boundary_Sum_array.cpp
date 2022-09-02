@@ -46,7 +46,7 @@ using ll = long long;
 void pgsolve()
 {
 	int i, j, n, m;
-	cin >> n ;
+	cin >> n;
 	int a[n][n];
 	rep(i, n)
 	{
@@ -56,22 +56,27 @@ void pgsolve()
 		}
 	}
 	int ans = 0;
+	// first and last column
+
 	rep(i, n)
 	{
 		ans += a[0][i];
 		ans += a[n - 1][i];
 	}
-	
-	REP(i,1, n-1)
+	// first and last row
+
+	REP(i, 1, n - 1)
 	{
 		ans += a[i][0];
 		ans += a[i][n - 1];
 	}
-
-	for(int i=1, j=1; i<n-1&&j<n-1; i++, j++)
+	// first diagonal
+	for (int i = 1, j = 1; i < n - 1 && j < n - 1; i++, j++)
 	{
 		ans += a[i][j];
 	}
+	// second diagonal
+
 	for (int i = n - 2, j = 1; i >= 1 && j <= n - 2; i--, j++)
 	{
 		if (i == j)
@@ -96,9 +101,8 @@ int32_t main()
 	freopen("error.txt", "w", stderr);
 #endif
 
+	pgsolve();
 
-		pgsolve();
-	
 	auto stop1 = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop1 - start1);
 #ifdef __GNUC__
