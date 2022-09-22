@@ -47,7 +47,7 @@ int TajMahal(vector<int> &a, int n)
             min = i;
     return min + 1;
 }
-//for in place by calculating cycles 
+// for in place by calculating cycles
 
 int go(vector<int> window, int min_index)
 {
@@ -94,8 +94,6 @@ i + t*n >= a[i];
 }
 */
 
-
-
 int main()
 {
     int n;
@@ -135,10 +133,10 @@ int main()
         }
     }
 
-    cout<<min_index+1;
+    cout << min_index + 1;
 
-    /* 
-    //in place passing min index to function go 
+    /*
+    //in place passing min index to function go
     int h = 0;
 
     std::vector<int> window;

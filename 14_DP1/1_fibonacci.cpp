@@ -25,10 +25,32 @@ int getfibonacci(int n)
 
     // return sol[n];
 }
+
+int fibRecursive(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+
+    return fibRecursive(n - 1) + fibRecursive(n - 2);
+}
+
+int fibIterative(int n)
+{
+    int memo[n];
+    memo[0] = 1;
+    memo[1] = 1;
+    //* sum of previous 2 elements sum
+    for (int i = 2; i <= n; i++)
+    {
+        memo[i] = memo[i - 1] + memo[i - 2];
+    }
+    return memo[n];
+}
 int main()
 {
     int t;
     cin >> t;
+    memset(sol, -1, sizeof(sol));
     while (t--)
     {
         sol[0] = 0;

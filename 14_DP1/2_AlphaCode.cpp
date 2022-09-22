@@ -30,26 +30,18 @@ Sample Output:
 #include <bits/stdc++.h>
 using namespace std;
 
-/* int num_codes_r(int *n, int size)
+int num_codes_r(int *arr, int size)
 {
-    if (size == 1)
-    {
+    if (size == 0 || size == 1)
         return 1;
-        //single code
-    }
-    if (size == 0)
+
+    int output = num_codes_r(arr, size - 1);
+    if (arr[size - 2] * 10 + arr[size - 1] <= 26)
     {
-        return 1;
-        //empty string
-    }
-    int output = num_codes(n, size - 1);
-    if (output[size - 2] * 10 + output[size - 1] <= 26)
-    {
-        output += num_codes(n, size - 2);
+        output += num_codes_r(arr, size - 2);
     }
     return output;
-    //exponential solution
-} */
+}
 
 int num_codes_i(int *input, int size)
 {
@@ -70,51 +62,47 @@ int num_codes_i(int *input, int size)
     delete[] output;
     return ans;
 }
-/*
-int num_codes2_memosized(int *n, int size, int *arr)
-{
-    if (size == 1)
-    {
-        return 1;
-    }
-    if (size == 0)
-    {
-        return 1;
-    }
-    if (arr[size] > 0)
-    {
-        return arr[size];
-    }
-    //filling from last
 
-    int output = num_codes(n, size - 1);
-    if (output[size - 2] * 10 + output[size - 1] <= 26)
+int num_codes_memo(int *arr, int size, int *memo)
+{
+
+    if (size == 0 || size == 1)
+        return 1;
+
+    if (memo[size] > 0)
     {
-        output += num_codes2_memosized(n, size - 2);
+        return memo[size];
     }
-    arr[size] = output;
+
+    int output = num_codes_memo(arr, size - 1, memo);
+    if (arr[size - 2] * 10 + arr[size - 1] <= 26)
+    {
+        output += num_codes_memo(arr, size - 2, memo);
+    }
+
+    memo[size] = output;
     return output;
-} */
+}
 
 int main()
 {
-    string a;
-    cin >> a;
-    int i = 0, len = 0;
-    // while(a[i]!='\0'){
-    //     len++;
-    //     i++;
-    // }
-    len = a.length();
-    int arr[len];
-    i = 0;
-    while (len != 0)
+    int t;
+    cin>>t;
+    while (t--)
     {
-        arr[i] = (int)((a[i]) - 48);
-        // cout << (int)((a[i]) - 48);
-        len--;
-        i++;
-    }
+    string n;
+        cin >> n;
+        if (n == "0")
+        {
+            return 0;
+        }
+        int *num_arr = new int[n.size() + 1];
+        for (int i = 0; i < n.size(); i++)
+        {
+            num_arr[i] = n[i] - '0';
+        }
 
-    cout << num_codes_i(arr, len) << endl;
+        cout << num_codes_i(num_arr, n.length()) << endl;
+        // cout << num_codes_memo(arr, n, memo) << endl;
+    }
 }

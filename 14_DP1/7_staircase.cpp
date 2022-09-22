@@ -47,10 +47,12 @@ int getWays(int n)
 }
 int main()
 {
+
     int t;
     cin >> t;
     while (t--)
     {
+        memset(sol, -1, sizeof(sol));
         sol[1] = 0;
         sol[2] = 1;
         int n;
