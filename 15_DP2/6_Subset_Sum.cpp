@@ -58,6 +58,16 @@ bool check(vector<int> num, int n, int s)
             }
         }
     }
+
+    // for (int i = 0; i <= n; i++)
+    // {
+    //     for (int j = 0; j <= s; j++)
+    //     {
+    //         cout << dp[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
     return dp[n][s];
 }
 
@@ -96,7 +106,7 @@ bool checker(int *arr, int n, int k, int **dp)
 int main()
 {
 
-    int n,sum;
+    int n, sum;
     cin >> n;
     int a[n];
     for (int i = 0; i < n; i++)
@@ -104,7 +114,7 @@ int main()
         cin >> a[i];
     }
 
-    cin >> sum;
+    // cin >> sum;
     /* bool dp[n + 1][sum + 1];
     for (int i = 0; i <= n; i++)
     {
@@ -134,21 +144,21 @@ int main()
             }
         }
     } */
- /*    if (dp[n][sum])
-    {
-        cout << "Yes";
-    }
-    else
-    {
-        cout << "No";
-    } */
+    /*    if (dp[n][sum])
+       {
+           cout << "Yes";
+       }
+       else
+       {
+           cout << "No";
+       } */
     vector<int> num;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        num.push_back(x);
-    }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     int x;
+    //     cin >> x;
+    //     num.push_back(x);
+    // }
     cin >> sum;
 
     int **dp = new int *[n + 1];
@@ -160,8 +170,17 @@ int main()
             dp[i][j] = -1;
         }
     }
-    int ans = checker(a, n, sum,dp);
-    int ans2 = check(num, n, sum);
+    int ans = checker(a, n, sum, dp);
+    // int ans2 = check(num, n, sum);
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= sum; j++)
+        {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    // cout<<dp[3][8]<<" "<<dp[2][6]<<" "<<dp[4][11];
      if (ans)
     {
         cout << "Yes" << endl;
