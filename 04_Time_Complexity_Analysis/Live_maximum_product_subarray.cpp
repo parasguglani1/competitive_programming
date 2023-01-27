@@ -25,7 +25,6 @@ int maxProductSubarray(int arr[], int n)
    min_ending_here is always 1 or
    some negative product ending with arr[i] */
 
-
     for (int i = 0; i < n; i++)
     {
         /* If this element is positive, update
@@ -48,14 +47,14 @@ int maxProductSubarray(int arr[], int n)
             min_ending_here = 1;
         }
         else
-        {   /* If element is negative. This is tricky
-          max_ending_here can either be 1 or positive.
-          min_ending_here can either be 1 or negative.
-          next max_ending_here will always be prev.
-          min_ending_here * arr[i] ,next min_ending_here
-          will be 1 if prev max_ending_here is 1, otherwise
-          next min_ending_here will be prev max_ending_here *
-          arr[i] */
+        { /* If element is negative. This is tricky
+        max_ending_here can either be 1 or positive.
+        min_ending_here can either be 1 or negative.
+        next max_ending_here will always be prev.
+        min_ending_here * arr[i] ,next min_ending_here
+        will be 1 if prev max_ending_here is 1, otherwise
+        next min_ending_here will be prev max_ending_here *
+        arr[i] */
             //* negative value
             int temp = max_ending_here;
             max_ending_here = max(min_ending_here * arr[i], 1); //* -12 * -5 == 60 //* it would be greater than 0

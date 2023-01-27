@@ -25,7 +25,7 @@ int allIndexes(int input[], int size, int x, int output[])
 
 int main()
 {
-  
+
     int n;
     cin >> n;
 

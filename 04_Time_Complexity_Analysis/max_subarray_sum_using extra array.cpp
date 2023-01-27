@@ -28,11 +28,31 @@ int kadane(int a[], int n, int s[])
     return maxnum;
 }
 
+int kadane(int a[], int n)
+{
+    int s[n];
+    return kadane(a, n, s);
+}
+int kadane2(int a[], int n)
+{
+    int totalSum = 0, maxSum = INT_MIN, curMax = 0, minSum = INT_MAX, curMin = 0;
+    for (int i = 0; i < n; i++)
+    {
+        curMax = max(a[i], curMax + a[i]); // update the current max subarray sum
+        maxSum = max(maxSum, curMax);      // update the overall max subarray sum
+    }
+
+    return maxSum;
+}
 int main()
 {
-    int a[] = {7, 6, -5, 10};
-    int s[4];
-    // OP=18
-    cout << kadane(a, 4, s);
+    int n;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    cout << kadane2(a, n);
     return 0;
 }

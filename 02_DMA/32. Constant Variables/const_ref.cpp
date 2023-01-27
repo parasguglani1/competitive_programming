@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
 	// constant int
 	const int i = 10;
 	int const i2 = 10;
-	
+
 	// constant reference from a non const int
 	int j = 12;
-	const int & k = j;
+	const int &k = j;
 	j++;
 
 	cout << k << endl;
@@ -19,9 +20,6 @@ int main() {
 
 	// reference from a const int
 	int const j3 = 123;
-	int & k3 = j3;
-	k3++;
-
-
+	// int & k3 = j3; // gives error
+	// k3++;
 }
-

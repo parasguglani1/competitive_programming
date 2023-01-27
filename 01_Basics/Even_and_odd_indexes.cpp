@@ -53,15 +53,13 @@ void pgsolve()
 	rep(i, n)
 	{
 		cin >> a[i];
-		if (i % 2 == 0&& a[i] % 2 == 0)
+		if (i % 2 == 0 && a[i] % 2 == 0)
 			evensum += a[i];
-		else if (i % 2 != 0&& a[i] % 2 != 0)
+		else if (i % 2 != 0 && a[i] % 2 != 0)
 			oddsum += a[i];
-
 	}
 
-	cout<<oddsum<<" "<<evensum<<endl;
-
+	cout << oddsum << " " << evensum << endl;
 }
 
 int32_t main()
@@ -76,8 +74,7 @@ int32_t main()
 	freopen("error.txt", "w", stderr);
 #endif
 
-
-		pgsolve();
+	pgsolve();
 
 	auto stop1 = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop1 - start1);

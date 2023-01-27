@@ -32,7 +32,7 @@ int main()
 		cin >> arr[i];
 	}
 
-	// find min element and max profit possible till then 
+	// find min element and max profit possible till then
 	int min = 99999;
 	int profit = 0;
 	for (i = 0; i < n; i++)

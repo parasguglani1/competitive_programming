@@ -9,61 +9,74 @@
 // 180 600 360 300 900
 // 20 12
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
 // O (n^2) time method
-void calcprod_on2(int a[],int n){
+void calcprod_on2(int a[], int n)
+{
     int p[n];
-    for(int i=0;i<n;i++){
-        p[i]=1;
+    for (int i = 0; i < n; i++)
+    {
+        p[i] = 1;
     }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            if(j!=i){
-                p[i]*=a[j];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (j != i)
+            {
+                p[i] *= a[j];
             }
         }
     }
-    for(int i=0;i<n;i++){
-        cout<<p[i]<<" ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << p[i] << " ";
     }
 }
 
 // O (n) time method
-void calcprod(int a[],int n){
+void calcprod(int a[], int n)
+{
     int p[n];
     // create left multi array
-    int curr_prod=1;
-    for(int i=0;i<n;i++){
-        p[i]=curr_prod;
-        curr_prod*=a[i];
+    int curr_prod = 1;
+    for (int i = 0; i < n; i++)
+    {
+        p[i] = curr_prod;
+        curr_prod *= a[i];
     }
     // create right multi array in same p array
-    curr_prod=1;
-    for(int i=n-1;i>=0;i--){
-        p[i]*=curr_prod;
-        curr_prod*=a[i];
+    curr_prod = 1;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        p[i] *= curr_prod;
+        curr_prod *= a[i];
     }
 
-    for(int i=0;i<n;i++){
-        cout<<p[i]<<" ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << p[i] << " ";
     }
 }
-int main(){
+int main()
+{
     int t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--)
+    {
         int n;
-        cin>>n;
+        cin >> n;
         int a[n];
-        for(int i=0;i<n;i++){
-            cin>>a[i];
+        for (int i = 0; i < n; i++)
+        {
+            cin >> a[i];
         }
         // calcprod_on2(a,n);
-        calcprod(a,n);
-        cout<<"\n";
+        calcprod(a, n);
+        cout << "\n";
     }
     return 0;
 }

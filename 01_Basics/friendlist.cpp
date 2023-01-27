@@ -32,7 +32,7 @@ void pgsolve()
     vi a(1001);
     rep(i, n)
     {
-        int x,y;
+        int x, y;
         cin >> x >> y;
         a[x]++;
         a[y]++;
@@ -47,15 +47,13 @@ void pgsolve()
         }
     }
 
-
-rep(i,1001)
-{
-    if (a[i] == max)
+    rep(i, 1001)
     {
-        cout << i <<endl;
+        if (a[i] == max)
+        {
+            cout << i << endl;
+        }
     }
-}
-
 }
 int32_t main()
 

@@ -38,7 +38,6 @@ void pgsolve()
         {
 
             count++;
-         
         }
     }
     if (count == 0)
@@ -54,7 +53,6 @@ void pgsolve()
             cout << i + 1 << " ";
         }
     }
-   
 }
 
 int32_t main()
@@ -65,7 +63,6 @@ int32_t main()
     cout.tie(0);
     auto start1 = high_resolution_clock::now();
 
-
     // Input File: tripin.txt
     freopen("tripin.txt", "r", stdin);
     // Output File: tripout.txt
@@ -75,8 +72,8 @@ int32_t main()
 
     auto stop1 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop1 - start1);
-// #ifdef __GNUC__
-//     cerr << "\n Time: " << duration.count() / 1000 << " ms" << endl;
-// #endif
+    // #ifdef __GNUC__
+    //     cerr << "\n Time: " << duration.count() / 1000 << " ms" << endl;
+    // #endif
     return 0;
 }

@@ -1,35 +1,38 @@
 #include <iostream>
 using namespace std;
 
-void increment(int& i) {
+void increment(int &i)
+{
 	i++;
 }
 
 // bad practice
-int& f(int n) {
+int &f(int n)
+{
 	int a = n;
 	return a;
 }
 
 // bad practice
-int* f2() {
+int *f2()
+{
 	int i = 10;
 	return &i;
 }
 
-int main() {
-	int* p = f2();
+int main()
+{
+	int *p = f2();
 
 	int i;
 	i = 10;
 
-	int& k1 = f(i);
-
+	int &k1 = f(i);
 
 	increment(i);
 	cout << i << endl;
 
-	int& j = i;
+	int &j = i;
 
 	i++;
 	cout << j << endl;

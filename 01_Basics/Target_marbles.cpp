@@ -99,7 +99,7 @@ int32_t main()
 	freopen("error.txt", "w", stderr);
 #endif
 
-	w(t)
+	// w(t)
 	{
 		pgsolve();
 	}

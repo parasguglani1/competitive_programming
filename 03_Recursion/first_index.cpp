@@ -20,9 +20,8 @@ int get_first_index(int arr[], int n, int x)
     }
     else
     {
-        return index + 1; //because recursive call has started from 1 and not 0
-    }
-  ;
+        return index + 1; // because recursive call has started from 1 and not 0
+    };
 }
 
 int main()

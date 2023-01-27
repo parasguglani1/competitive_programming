@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool isPrime[10000 + 1] = {0};
-
+#define N 1000000
+bool isPrime[N] = {0};
+vector<int> primes;
 int sieve(int n)
 {
     int count = 0;
     for (int i = 2; i < n + 1; i++)
     {
-
         isPrime[i] = true;
     }
 
@@ -26,6 +26,7 @@ int sieve(int n)
         if (isPrime[i] == true)
         {
             count++;
+            primes.push_back(i);
         }
     }
 
@@ -38,7 +39,7 @@ int main()
     cout << sieve(n) << endl;
     for (int i = 0; i < n; i++)
     {
-        cout<<isPrime[i]<<" ";
+        cout << isPrime[i] << " ";
     }
 
     return 0;
